@@ -420,7 +420,7 @@ if ($reports_source == TS_IMAP) {
 					unlink($f);
 				}
 				$counts++;
-			} elsif (open(FILE, "<", $f)) {
+			} elsif ($f eq "-" and open(FILE, $f) or open(FILE, "<", $f)) {
 
 				$filecontent = join("", <FILE>);
 				close FILE;
